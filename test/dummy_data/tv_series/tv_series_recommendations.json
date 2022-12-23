@@ -1,0 +1,22 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "poster_path": "/path.jpg",
+      "popularity": 11.520271,
+      "id": 67419,
+      "backdrop_path": "/path.jpg",
+      "vote_average": 1.39,
+      "overview": "Overview",
+      "first_air_date": "2016-08-28",
+      "genre_ids": [
+        18
+      ],
+      "vote_count": 9,
+      "name": "Victoria",
+      "original_name": "Victoria"
+    }
+  ],
+  "total_results": 43,
+  "total_pages": 3
+}
