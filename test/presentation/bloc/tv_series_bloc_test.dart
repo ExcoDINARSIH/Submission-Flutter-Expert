@@ -18,7 +18,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../../test/dummy_data/tv_series/dummy_objects_tv_series.dart';
+import '../../dummy_data/dummy_objects_tv_series.dart';
 
 import 'tv_series_bloc_test.mocks.dart';
 

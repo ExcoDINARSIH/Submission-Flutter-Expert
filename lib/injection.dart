@@ -1,5 +1,6 @@
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:ditonton/common/network_info.dart';
+import 'package:ditonton/common/ssl_pinning.dart';
 import 'package:ditonton/data/datasources/movies/db/database_helper.dart';
 import 'package:ditonton/data/datasources/tv_series/db/database_helper_tv_series.dart';
 import 'package:ditonton/data/datasources/movies/movie_local_data_source.dart';
@@ -32,7 +33,6 @@ import 'package:ditonton/domain/usecases/movies/search_movies.dart';
 import 'package:ditonton/domain/usecases/tv_series/search_tv_series.dart';
 import 'package:ditonton/presentation/bloc/movies_bloc.dart';
 import 'package:ditonton/presentation/bloc/tv_series_bloc.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
@@ -45,11 +45,11 @@ void init() {
   locator.registerFactory(() => TVSeriesDetailBloc(locator()));
   locator.registerFactory(() => TVSeriesRecommendationsBloc(locator()));
   locator.registerFactory(() => TVSeriesWatchlistBloc(
-    locator(),
-    locator(),
-    locator(),
-    locator(),
-  ));
+        locator(),
+        locator(),
+        locator(),
+        locator(),
+      ));
   locator.registerFactory(() => SearchSeriesBloc(locator()));
 
   locator.registerFactory(() => NowPlayingBloc(locator()));
@@ -58,11 +58,11 @@ void init() {
   locator.registerFactory(() => DetailBloc(locator()));
   locator.registerFactory(() => RecommendationsBloc(locator()));
   locator.registerFactory(() => WatchlistBloc(
-    locator(),
-    locator(),
-    locator(),
-    locator(),
-  ));
+        locator(),
+        locator(),
+        locator(),
+        locator(),
+      ));
   locator.registerFactory(() => SearchBloc(locator()));
 
   // use case
@@ -89,14 +89,14 @@ void init() {
 
   // repository
   locator.registerLazySingleton<MovieRepository>(
-        () => MovieRepositoryImpl(
+    () => MovieRepositoryImpl(
       remoteDataSource: locator(),
       localDataSource: locator(),
       networkInfo: locator(),
     ),
   );
   locator.registerLazySingleton<TVSeriesRepository>(
-        () => TVSeriesRepositoryImpl(
+    () => TVSeriesRepositoryImpl(
       remoteDataSource: locator(),
       localDataSource: locator(),
       networkInfo: locator(),
@@ -105,23 +105,23 @@ void init() {
 
   // data sources
   locator.registerLazySingleton<MovieRemoteDataSource>(
-          () => MovieRemoteDataSourceImpl(client: locator()));
+      () => MovieRemoteDataSourceImpl(client: locator()));
   locator.registerLazySingleton<TVSeriesRemoteDataSource>(
-          () => TVSeriesRemoteDataSourceImpl(client: locator()));
+      () => TVSeriesRemoteDataSourceImpl(client: locator()));
   locator.registerLazySingleton<MovieLocalDataSource>(
-          () => MovieLocalDataSourceImpl(databaseHelper: locator()));
+      () => MovieLocalDataSourceImpl(databaseHelper: locator()));
   locator.registerLazySingleton<TVSeriesLocalDataSource>(
-          () => TVSeriesLocalDataSourceImpl(databaseHelperSeries: locator()));
+      () => TVSeriesLocalDataSourceImpl(databaseHelperSeries: locator()));
 
   // helper
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
   locator.registerLazySingleton<DatabaseHelperSeries>(
-          () => DatabaseHelperSeries());
+      () => DatabaseHelperSeries());
 
   // network info
   locator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(locator()));
 
   // external
-  locator.registerLazySingleton(() => http.Client());
   locator.registerLazySingleton(() => DataConnectionChecker());
+  locator.registerLazySingleton(() => SSLHelper.client);
 }

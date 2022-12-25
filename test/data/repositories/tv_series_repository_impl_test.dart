@@ -13,7 +13,7 @@ import 'package:ditonton/domain/entities/tv_series/tv_series_detail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../dummy_data/tv_series/dummy_objects_tv_series.dart';
+import '../../dummy_data/dummy_objects_tv_series.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {

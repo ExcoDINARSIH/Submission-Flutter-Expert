@@ -13,7 +13,7 @@ import 'package:ditonton/common/network_info.dart' as _i26;
 import 'package:ditonton/data/datasources/movies/db/database_helper.dart'
     as _i23;
 import 'package:ditonton/data/datasources/movies/movie_local_data_source.dart'
-    as _i19;
+    as _i17;
 import 'package:ditonton/data/datasources/movies/movie_remote_data_source.dart'
     as _i15;
 import 'package:ditonton/data/datasources/tv_series/db/database_helper_tv_series.dart'
@@ -21,13 +21,13 @@ import 'package:ditonton/data/datasources/tv_series/db/database_helper_tv_series
 import 'package:ditonton/data/datasources/tv_series/tv_series_local_data_source.dart'
     as _i21;
 import 'package:ditonton/data/datasources/tv_series/tv_series_remote_data_source.dart'
-    as _i17;
+    as _i19;
 import 'package:ditonton/data/models/movies/movie_detail_model.dart' as _i3;
 import 'package:ditonton/data/models/movies/movie_model.dart' as _i16;
-import 'package:ditonton/data/models/movies/movie_table.dart' as _i20;
+import 'package:ditonton/data/models/movies/movie_table.dart' as _i18;
 import 'package:ditonton/data/models/tv_series/tv_series_detail_model.dart'
     as _i4;
-import 'package:ditonton/data/models/tv_series/tv_series_model.dart' as _i18;
+import 'package:ditonton/data/models/tv_series/tv_series_model.dart' as _i20;
 import 'package:ditonton/data/models/tv_series/tv_series_table.dart' as _i22;
 import 'package:ditonton/domain/entities/movies/movie.dart' as _i10;
 import 'package:ditonton/domain/entities/movies/movie_detail.dart' as _i11;
@@ -311,30 +311,72 @@ class MockMovieRemoteDataSource extends _i1.Mock
           as _i8.Future<List<_i16.MovieModel>>);
 }
 
+/// A class which mocks [MovieLocalDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockMovieLocalDataSource extends _i1.Mock
+    implements _i17.MovieLocalDataSource {
+  MockMovieLocalDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i8.Future<String> insertWatchlist(_i18.MovieTable? movie) =>
+      (super.noSuchMethod(Invocation.method(#insertWatchlist, [movie]),
+          returnValue: _i8.Future<String>.value('')) as _i8.Future<String>);
+  @override
+  _i8.Future<String> removeWatchlist(_i18.MovieTable? movie) =>
+      (super.noSuchMethod(Invocation.method(#removeWatchlist, [movie]),
+          returnValue: _i8.Future<String>.value('')) as _i8.Future<String>);
+  @override
+  _i8.Future<_i18.MovieTable?> getMovieById(int? id) =>
+      (super.noSuchMethod(Invocation.method(#getMovieById, [id]),
+              returnValue: _i8.Future<_i18.MovieTable?>.value())
+          as _i8.Future<_i18.MovieTable?>);
+  @override
+  _i8.Future<List<_i18.MovieTable>> getWatchlistMovies() =>
+      (super.noSuchMethod(Invocation.method(#getWatchlistMovies, []),
+              returnValue:
+                  _i8.Future<List<_i18.MovieTable>>.value(<_i18.MovieTable>[]))
+          as _i8.Future<List<_i18.MovieTable>>);
+  @override
+  _i8.Future<void> cacheNowPlayingMovies(List<_i18.MovieTable>? movies) =>
+      (super.noSuchMethod(Invocation.method(#cacheNowPlayingMovies, [movies]),
+              returnValue: _i8.Future<void>.value(),
+              returnValueForMissingStub: _i8.Future<void>.value())
+          as _i8.Future<void>);
+  @override
+  _i8.Future<List<_i18.MovieTable>> getCachedNowPlayingMovies() =>
+      (super.noSuchMethod(Invocation.method(#getCachedNowPlayingMovies, []),
+              returnValue:
+                  _i8.Future<List<_i18.MovieTable>>.value(<_i18.MovieTable>[]))
+          as _i8.Future<List<_i18.MovieTable>>);
+}
+
 /// A class which mocks [TVSeriesRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTVSeriesRemoteDataSource extends _i1.Mock
-    implements _i17.TVSeriesRemoteDataSource {
+    implements _i19.TVSeriesRemoteDataSource {
   MockTVSeriesRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i8.Future<List<_i18.TVSeriesModel>> getNowPlayingSeries() =>
+  _i8.Future<List<_i20.TVSeriesModel>> getNowPlayingSeries() =>
       (super.noSuchMethod(Invocation.method(#getNowPlayingSeries, []),
-          returnValue: _i8.Future<List<_i18.TVSeriesModel>>.value(
-              <_i18.TVSeriesModel>[])) as _i8.Future<List<_i18.TVSeriesModel>>);
+          returnValue: _i8.Future<List<_i20.TVSeriesModel>>.value(
+              <_i20.TVSeriesModel>[])) as _i8.Future<List<_i20.TVSeriesModel>>);
   @override
-  _i8.Future<List<_i18.TVSeriesModel>> getPopularSeries() =>
+  _i8.Future<List<_i20.TVSeriesModel>> getPopularSeries() =>
       (super.noSuchMethod(Invocation.method(#getPopularSeries, []),
-          returnValue: _i8.Future<List<_i18.TVSeriesModel>>.value(
-              <_i18.TVSeriesModel>[])) as _i8.Future<List<_i18.TVSeriesModel>>);
+          returnValue: _i8.Future<List<_i20.TVSeriesModel>>.value(
+              <_i20.TVSeriesModel>[])) as _i8.Future<List<_i20.TVSeriesModel>>);
   @override
-  _i8.Future<List<_i18.TVSeriesModel>> getTopRatedSeries() =>
+  _i8.Future<List<_i20.TVSeriesModel>> getTopRatedSeries() =>
       (super.noSuchMethod(Invocation.method(#getTopRatedSeries, []),
-          returnValue: _i8.Future<List<_i18.TVSeriesModel>>.value(
-              <_i18.TVSeriesModel>[])) as _i8.Future<List<_i18.TVSeriesModel>>);
+          returnValue: _i8.Future<List<_i20.TVSeriesModel>>.value(
+              <_i20.TVSeriesModel>[])) as _i8.Future<List<_i20.TVSeriesModel>>);
   @override
   _i8.Future<_i4.TVSeriesDetailResponse> getSeriesDetail(int? id) =>
       (super.noSuchMethod(Invocation.method(#getSeriesDetail, [id]),
@@ -343,57 +385,15 @@ class MockTVSeriesRemoteDataSource extends _i1.Mock
                       this, Invocation.method(#getSeriesDetail, [id]))))
           as _i8.Future<_i4.TVSeriesDetailResponse>);
   @override
-  _i8.Future<List<_i18.TVSeriesModel>> getSeriesRecommendations(int? id) =>
+  _i8.Future<List<_i20.TVSeriesModel>> getSeriesRecommendations(int? id) =>
       (super.noSuchMethod(Invocation.method(#getSeriesRecommendations, [id]),
-          returnValue: _i8.Future<List<_i18.TVSeriesModel>>.value(
-              <_i18.TVSeriesModel>[])) as _i8.Future<List<_i18.TVSeriesModel>>);
+          returnValue: _i8.Future<List<_i20.TVSeriesModel>>.value(
+              <_i20.TVSeriesModel>[])) as _i8.Future<List<_i20.TVSeriesModel>>);
   @override
-  _i8.Future<List<_i18.TVSeriesModel>> searchSeries(String? query) =>
+  _i8.Future<List<_i20.TVSeriesModel>> searchSeries(String? query) =>
       (super.noSuchMethod(Invocation.method(#searchSeries, [query]),
-          returnValue: _i8.Future<List<_i18.TVSeriesModel>>.value(
-              <_i18.TVSeriesModel>[])) as _i8.Future<List<_i18.TVSeriesModel>>);
-}
-
-/// A class which mocks [MovieLocalDataSource].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockMovieLocalDataSource extends _i1.Mock
-    implements _i19.MovieLocalDataSource {
-  MockMovieLocalDataSource() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i8.Future<String> insertWatchlist(_i20.MovieTable? movie) =>
-      (super.noSuchMethod(Invocation.method(#insertWatchlist, [movie]),
-          returnValue: _i8.Future<String>.value('')) as _i8.Future<String>);
-  @override
-  _i8.Future<String> removeWatchlist(_i20.MovieTable? movie) =>
-      (super.noSuchMethod(Invocation.method(#removeWatchlist, [movie]),
-          returnValue: _i8.Future<String>.value('')) as _i8.Future<String>);
-  @override
-  _i8.Future<_i20.MovieTable?> getMovieById(int? id) =>
-      (super.noSuchMethod(Invocation.method(#getMovieById, [id]),
-              returnValue: _i8.Future<_i20.MovieTable?>.value())
-          as _i8.Future<_i20.MovieTable?>);
-  @override
-  _i8.Future<List<_i20.MovieTable>> getWatchlistMovies() =>
-      (super.noSuchMethod(Invocation.method(#getWatchlistMovies, []),
-              returnValue:
-                  _i8.Future<List<_i20.MovieTable>>.value(<_i20.MovieTable>[]))
-          as _i8.Future<List<_i20.MovieTable>>);
-  @override
-  _i8.Future<void> cacheNowPlayingMovies(List<_i20.MovieTable>? movies) =>
-      (super.noSuchMethod(Invocation.method(#cacheNowPlayingMovies, [movies]),
-              returnValue: _i8.Future<void>.value(),
-              returnValueForMissingStub: _i8.Future<void>.value())
-          as _i8.Future<void>);
-  @override
-  _i8.Future<List<_i20.MovieTable>> getCachedNowPlayingMovies() =>
-      (super.noSuchMethod(Invocation.method(#getCachedNowPlayingMovies, []),
-              returnValue:
-                  _i8.Future<List<_i20.MovieTable>>.value(<_i20.MovieTable>[]))
-          as _i8.Future<List<_i20.MovieTable>>);
+          returnValue: _i8.Future<List<_i20.TVSeriesModel>>.value(
+              <_i20.TVSeriesModel>[])) as _i8.Future<List<_i20.TVSeriesModel>>);
 }
 
 /// A class which mocks [TVSeriesLocalDataSource].
@@ -451,7 +451,7 @@ class MockDatabaseHelper extends _i1.Mock implements _i23.DatabaseHelper {
           as _i8.Future<_i24.Database?>);
   @override
   _i8.Future<void> insertCacheTransaction(
-          List<_i20.MovieTable>? movies, String? category) =>
+          List<_i18.MovieTable>? movies, String? category) =>
       (super.noSuchMethod(
               Invocation.method(#insertCacheTransaction, [movies, category]),
               returnValue: _i8.Future<void>.value(),
@@ -468,11 +468,11 @@ class MockDatabaseHelper extends _i1.Mock implements _i23.DatabaseHelper {
       (super.noSuchMethod(Invocation.method(#clearCache, [category]),
           returnValue: _i8.Future<int>.value(0)) as _i8.Future<int>);
   @override
-  _i8.Future<int> insertWatchlist(_i20.MovieTable? movie) =>
+  _i8.Future<int> insertWatchlist(_i18.MovieTable? movie) =>
       (super.noSuchMethod(Invocation.method(#insertWatchlist, [movie]),
           returnValue: _i8.Future<int>.value(0)) as _i8.Future<int>);
   @override
-  _i8.Future<int> removeWatchlist(_i20.MovieTable? movie) =>
+  _i8.Future<int> removeWatchlist(_i18.MovieTable? movie) =>
       (super.noSuchMethod(Invocation.method(#removeWatchlist, [movie]),
           returnValue: _i8.Future<int>.value(0)) as _i8.Future<int>);
   @override

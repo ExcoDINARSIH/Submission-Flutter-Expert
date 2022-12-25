@@ -25,7 +25,7 @@ void main() {
 
   group('get Now Playing TVSeries', () {
     final tTVSeriesList = TVSeriesResponse.fromJson(
-        json.decode(readJson('dummy_data/tv_series/now_playing.json')))
+        json.decode(readJson('dummy_data/now_playing_tv_series.json')))
         .seriesList;
 
     test('should return list of TV Series Model when the response code is 200',
@@ -34,7 +34,7 @@ void main() {
           when(mockHttpClient
               .get(Uri.parse('$BASE_URL/tv/airing_today?$API_KEY')))
               .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv_series/now_playing.json'), 200));
+              http.Response(readJson('dummy_data/now_playing_tv_series.json'), 200));
           // act
           final result = await dataSource.getNowPlayingSeries();
           // assert
@@ -57,7 +57,7 @@ void main() {
 
   group('get Popular TV Series', () {
     final tTVSeriesList =
-        TVSeriesResponse.fromJson(json.decode(readJson('dummy_data/tv_series/popular_tv_series.json')))
+        TVSeriesResponse.fromJson(json.decode(readJson('dummy_data/popular_tv_series.json')))
             .seriesList;
 
     test('should return list of series when response is success (200)',
@@ -65,7 +65,7 @@ void main() {
           // arrange
           when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/popular?$API_KEY')))
               .thenAnswer((_) async =>
-              http.Response(readJson('dummy_data/tv_series/popular_tv_series.json'), 200));
+              http.Response(readJson('dummy_data/popular_tv_series.json'), 200));
           // act
           final result = await dataSource.getPopularSeries();
           // assert
@@ -87,14 +87,14 @@ void main() {
 
   group('get Top Rated TV Series', () {
     final tTVSeriesList = TVSeriesResponse.fromJson(
-        json.decode(readJson('dummy_data/tv_series/top_rated.json')))
+        json.decode(readJson('dummy_data/top_rated_tv_series.json')))
         .seriesList;
 
     test('should return list of series when response code is 200 ', () async {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/top_rated?$API_KEY')))
           .thenAnswer((_) async =>
-          http.Response(readJson('dummy_data/tv_series/top_rated.json'), 200));
+          http.Response(readJson('dummy_data/top_rated_tv_series.json'), 200));
       // act
       final result = await dataSource.getTopRatedSeries();
       // assert
@@ -116,13 +116,13 @@ void main() {
   group('get series detail', () {
     final tId = 1;
     final tTVSeriesDetail = TVSeriesDetailResponse.fromJson(
-        json.decode(readJson('dummy_data/tv_series/tv_series_detail.json')));
+        json.decode(readJson('dummy_data/tv_series_detail.json')));
 
     test('should return series detail when the response code is 200', () async {
       // arrange
       when(mockHttpClient.get(Uri.parse('$BASE_URL/tv/$tId?$API_KEY')))
           .thenAnswer((_) async =>
-          http.Response(readJson('dummy_data/tv_series/tv_series_detail.json'), 200));
+          http.Response(readJson('dummy_data/tv_series_detail.json'), 200));
       // act
       final result = await dataSource.getSeriesDetail(tId);
       // assert
@@ -143,7 +143,7 @@ void main() {
 
   group('get series recommendations', () {
     final tTVSeriesList = TVSeriesResponse.fromJson(
-        json.decode(readJson('dummy_data/tv_series/tv_series_recommendations.json')))
+        json.decode(readJson('dummy_data/tv_series_recommendations.json')))
         .seriesList;
     final tId = 1;
 
@@ -153,7 +153,7 @@ void main() {
           when(mockHttpClient
               .get(Uri.parse('$BASE_URL/tv/$tId/recommendations?$API_KEY')))
               .thenAnswer((_) async => http.Response(
-              readJson('dummy_data/tv_series/tv_series_recommendations.json'), 200));
+              readJson('dummy_data/tv_series_recommendations.json'), 200));
           // act
           final result = await dataSource.getSeriesRecommendations(tId);
           // assert
@@ -175,7 +175,7 @@ void main() {
 
   group('search series', () {
     final tSearchResult = TVSeriesResponse.fromJson(
-        json.decode(readJson('dummy_data/tv_series/search_tv_series.json')))
+        json.decode(readJson('dummy_data/search_tv_series.json')))
         .seriesList;
     final tQuery = 'Game of Thrones';
 
@@ -184,7 +184,7 @@ void main() {
       when(mockHttpClient
           .get(Uri.parse('$BASE_URL/search/tv?$API_KEY&query=$tQuery')))
           .thenAnswer((_) async => http.Response(
-          readJson('dummy_data/tv_series/search_tv_series.json'), 200));
+          readJson('dummy_data/search_tv_series.json'), 200));
       // act
       final result = await dataSource.searchSeries(tQuery);
       // assert
