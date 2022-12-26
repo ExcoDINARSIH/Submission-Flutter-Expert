@@ -6,3 +6,5 @@
 ![CodeMagic](https://user-images.githubusercontent.com/101916003/209466944-e0afeab2-e446-4bd0-bd88-03f2eeb173ae.png)
 
 ![Firebase](https://user-images.githubusercontent.com/101916003/209466953-62d924c4-9cf0-4b56-beee-02ed25911282.png)
+
+![Analytics](https://user-images.githubusercontent.com/101916003/209533856-fa2c4baf-41f9-416a-8a16-bd44d1267dfc.png)
